@@ -1,11 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import PaginationBtns from '../components/PaginationBtns'
+
+
  const QuotesList = () => {
 
   return (
     <View style={styles.container}>
-      <Text>QuotesList!</Text>
+      <PaginationBtns/>
     </View>
   );
 }

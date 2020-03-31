@@ -1,11 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+
  const QuotesDetails = () => {
 
   return (
     <View style={styles.container}>
-      <Text>QuotesDetails!</Text>
+     
+     <PaginationBtns/>
     </View>
   );
 }
