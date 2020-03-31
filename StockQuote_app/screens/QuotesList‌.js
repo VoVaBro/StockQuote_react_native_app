@@ -1,15 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 
-import Navigation from './navigation/Navigation'
+ const QuotesList = () => {
 
-
-export default function App() {
   return (
-    <NavigationContainer>
-      <Navigation/>
-    </NavigationContainer>
+    <View style={styles.container}>
+      <Text>QuotesList!</Text>
+    </View>
   );
 }
 
@@ -21,3 +18,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default QuotesList
