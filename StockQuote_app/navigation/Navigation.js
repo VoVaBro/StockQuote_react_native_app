@@ -13,7 +13,7 @@ import RealTimeQuotes from '../screens/RealTimeQuotes'
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-const StackNavigator = ({ navigation }) => {
+const QuotesStak = ({ navigation }) => {
     return (
         <Stack.Navigator
             initialRouteName="Quotes List"
@@ -21,7 +21,8 @@ const StackNavigator = ({ navigation }) => {
                 headerTintColor: 'gold',
                 headerStyle: {
                     backgroundColor: '#A2282B',
-                    borderRadius: 25,
+                    borderBottomLeftRadius: 30,
+                    borderBottomRightRadius: 30,
                     shadowColor: "#000",
                     shadowOffset: {
                         width: 0,
@@ -49,13 +50,50 @@ const StackNavigator = ({ navigation }) => {
     )
 }
 
+const RealTimeStack = ({ navigation }) => {
+    return (
+        <Stack.Navigator
+            initialRouteName="Quotes List"
+            screenOptions={{
+                headerTintColor: 'gold',
+                headerStyle: {
+                    backgroundColor: '#A2282B',
+                    borderRadius: 25,
+                    shadowColor: "#000",
+                    shadowOffset: {
+                        width: 0,
+                        height: 12,
+                    },
+                    shadowOpacity: 0.58,
+                    shadowRadius: 16.00,
+
+                    elevation: 24,
+                },
+                headerTitleStyle: { fontSize: 24 },
+            }}
+        >
+            <Stack.Screen name="Real Time Quotes" component={RealTimeQuotes} options={{
+                headerLeft: () => (
+                    <TouchableOpacity
+                        style={{ marginLeft: 20 }}
+                        onPress={() => navigation.openDrawer()}>
+                        <MaterialCommunityIcons name="backburger" size={32} color='#268421' />
+                    </TouchableOpacity>
+                )
+            }} />
+        </Stack.Navigator>
+    )
+}
+
+
 const DrawerNavigator = () => {
     return (
         <Drawer.Navigator
+            drawerType='slide'
             hideStatusBar={true}
             initialRouteName="Quotes List"
             drawerStyle={{
-                width: 230,
+                width: 250,
                 shadowColor: "#000",
                 shadowOffset: {
                     width: 0,
@@ -72,8 +110,8 @@ const DrawerNavigator = () => {
                 labelStyle: { fontSize: 20, color: 'black' },
             }}
         >
-            <Drawer.Screen options={{ drawerLabel: 'Quotes' }} name="Quotes List" component={StackNavigator} />
-            <Drawer.Screen name="Real time Quotes" component={RealTimeQuotes} />
+            <Drawer.Screen options={{ drawerLabel: 'Quotes' }} name="Quotes List" component={QuotesStak} />
+            <Drawer.Screen name="Real time Quotes" component={RealTimeStack} />
         </Drawer.Navigator>
     )
 }
