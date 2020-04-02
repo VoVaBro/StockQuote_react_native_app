@@ -3,12 +3,15 @@ import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import { useHttp } from '../hooks/useHttp'
 
 
+
 import PaginationBtns from '../components/PaginationBtns'
 import SybolCardLisl from '../components/SybolCardLisl'
 import SearchBar from '../components/SearchBar'
 
 
 const QuotesList = ({ navigation }) => {
+
+  
 
   const [quotesData, setQuotesData] = useState([])
 
@@ -35,9 +38,6 @@ const QuotesList = ({ navigation }) => {
     fetchData()
   }, [])
 
-  
-
-
 
 
   if (loading) {
@@ -51,22 +51,23 @@ const QuotesList = ({ navigation }) => {
   } else {
 
     return (
-      
-        <View style={{ flex: 1 }}>
-          <SybolCardLisl quotesData={currentQuotesList} navigation={navigation} />
 
-          <SearchBar />
+      <View style={{ flex: 1 }}>
 
-          <PaginationBtns
-            setFirstIndex={setFirstIndex}
-            setLastIndex={setLastIndex}
-            current={indexOfLastQuotes}
-            total={quotesData.length}
-            indexOfFirstQuotes={indexOfFirstQuotes}
-            indexOfLastQuotes={indexOfLastQuotes}
-          />
-        </View>
-      
+        <SybolCardLisl quotesData={currentQuotesList} navigation={navigation} />
+
+        <SearchBar />
+
+        <PaginationBtns
+          setFirstIndex={setFirstIndex}
+          setLastIndex={setLastIndex}
+          current={indexOfLastQuotes}
+          total={quotesData.length}
+          indexOfFirstQuotes={indexOfFirstQuotes}
+          indexOfLastQuotes={indexOfLastQuotes}
+        />
+      </View>
+
     );
   }
 }

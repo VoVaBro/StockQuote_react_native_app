@@ -33,6 +33,8 @@ const SybolCardLisl = ({ quotesData, navigation }) => {
   );
 }
 
+
+
 const styles = StyleSheet.create({
   list: {
     position: 'relative',

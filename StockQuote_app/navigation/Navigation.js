@@ -17,7 +17,7 @@ const Drawer = createDrawerNavigator();
 const QuotesStak = ({ navigation }) => {
     return (
         <Stack.Navigator
-            initialRouteName="Quotes List"
+            initialRouteName="QuotesList"
             screenOptions={{
                 headerTintColor: 'gold',
                 headerStyle: {
@@ -37,7 +37,8 @@ const QuotesStak = ({ navigation }) => {
                 headerTitleStyle: { fontSize: 24 },
             }}
         >
-            <Stack.Screen name="Quotes List" component={QuotesList} options={{
+            <Stack.Screen  name="QuotesList" component={QuotesList} options={{
+                title: 'Quotes List',
                 headerLeft: () => (
                     <TouchableOpacity
                         style={{ marginLeft: 20 }}
@@ -49,7 +50,7 @@ const QuotesStak = ({ navigation }) => {
             <Stack.Screen name="Quotes Details" component={QuotesDetails} options={{headerBackTitleVisible: false, headerLeft: () => (
                 <TouchableOpacity
                 style={{ marginLeft: 20 }}
-                onPress={() => navigation.goBack()}>
+                onPress={() => navigation.navigate("QuotesList")}>
                 <MaterialIcons name="arrow-back" size={32} color='#268421' />
             </TouchableOpacity>
             )}}  />

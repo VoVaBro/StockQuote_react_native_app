@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { StyleSheet, Text, View, ActivityIndicator, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, ScrollView, Dimensions } from 'react-native';
 import { useHttp } from '../hooks/useHttp'
 
+
+const {width} = Dimensions.get('screen')
 
 const QuotesDetails = ({ route }) => {
 
@@ -38,7 +40,7 @@ const QuotesDetails = ({ route }) => {
       <View style={styles.container}>
         {
           quotesDescription.map(i => (
-            <ScrollView style={styles.scroll} key={i.symbol}>
+            <ScrollView  showsVerticalScrollIndicator={false} style={styles.scroll} key={i.symbol}>
               <View style={styles.description}>
                 <Text style={styles.text}>Symbol: </Text>
                 <Text style={{fontWeight: '600', fontSize: 25}}>{i.symbol}</Text>
@@ -89,7 +91,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
-    width: 340,
+    width: width <= 320 ? 260 : 340,
     height: 70,
     marginTop: 15,
     paddingTop: 10,
