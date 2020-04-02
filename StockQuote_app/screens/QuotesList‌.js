@@ -4,6 +4,7 @@ import { useHttp } from '../hooks/useHttp'
 
 import PaginationBtns from '../components/PaginationBtns'
 import SybolCardLisl from '../components/SybolCardLisl'
+import SearchBar from '../components/SearchBar'
 
 
 const QuotesList = () => {
@@ -11,11 +12,9 @@ const QuotesList = () => {
   const [quotesData, setQuotesData] = useState([])
 
 
-  const [currentQuotes, setCurrentQuotes] = useState(1);
-  const [qutesPerPage, setQutesPerPage] = useState(15);
+  const [indexOfFirstQuotes, setFirstIndex] = useState(0);
+  const [indexOfLastQuotes, setLastIndex] = useState(50);
 
-  const indexOfLastQuotes = currentQuotes * qutesPerPage;
-  const indexOfFirstQuotes = indexOfLastQuotes - qutesPerPage;
 
   const currentQuotesList = quotesData.slice(indexOfFirstQuotes, indexOfLastQuotes);
 
@@ -39,11 +38,20 @@ const QuotesList = () => {
 
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
 
-      <SybolCardLisl quotesData={quotesData}/>
+      <SybolCardLisl quotesData={currentQuotesList} />
 
-      <PaginationBtns current={currentQuotesList.length} total={quotesData.length}/>
+      <SearchBar />
+
+      <PaginationBtns
+        setFirstIndex={setFirstIndex}
+        setLastIndex={setLastIndex}
+        current={indexOfLastQuotes}
+        total={quotesData.length}
+        indexOfFirstQuotes={indexOfFirstQuotes}
+        indexOfLastQuotes={indexOfLastQuotes}
+      />
     </View>
   );
 }

@@ -1,23 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View, FlatList, Dimensions } from 'react-native';
 
 import SybolCard from '../components/SybolCard'
 
-const {width, height} = Dimensions.get('screen')
+const { width, height } = Dimensions.get('screen')
 
 
- const SybolCardLisl = ({quotesData}) => {
+const SybolCardLisl = ({ quotesData }) => {
+
+  
 
   return (
     <View style={styles.list}>
       <FlatList
-     width={360}
-      showsVerticalScrollIndicator={false}
-      data={quotesData}
-      renderItem={({ item }) => <SybolCard title={item.symbol} />}
-      keyExtractor={item => item.symbol}
+        width={360}
+        showsVerticalScrollIndicator={false}
+        data={quotesData}
+        renderItem={({ item }) => <SybolCard title={item.symbol} />}
+        keyExtractor={item => item.symbol}
       />
-      </View>
+    </View>
   );
 }
 
@@ -26,8 +28,9 @@ const styles = StyleSheet.create({
     position: 'relative',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',  
+    justifyContent: 'center',
     marginLeft: 0,
+    marginTop: 40,
     height: height * 0.9,
     marginLeft: 33
   }
