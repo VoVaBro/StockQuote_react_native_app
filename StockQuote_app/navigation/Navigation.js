@@ -4,7 +4,7 @@ import { View, TouchableOpacity, StyleSheet } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
 
 import QuotesList from '../screens/QuotesList‌'
 import QuotesDetails from '../screens/QuotesDetails'
@@ -12,6 +12,7 @@ import RealTimeQuotes from '../screens/RealTimeQuotes'
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
+
 
 const QuotesStak = ({ navigation }) => {
     return (
@@ -45,7 +46,13 @@ const QuotesStak = ({ navigation }) => {
                     </TouchableOpacity>
                 )
             }} />
-            <Stack.Screen name="Quotes Details" component={QuotesDetails} />
+            <Stack.Screen name="Quotes Details" component={QuotesDetails} options={{headerBackTitleVisible: false, headerLeft: () => (
+                <TouchableOpacity
+                style={{ marginLeft: 20 }}
+                onPress={() => navigation.goBack()}>
+                <MaterialIcons name="arrow-back" size={32} color='#268421' />
+            </TouchableOpacity>
+            )}}  />
         </Stack.Navigator>
     )
 }

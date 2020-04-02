@@ -10,7 +10,7 @@ const PaginationBtns = ({ total, current, setFirstIndex, setLastIndex, indexOfFi
 
     const next = () => {
         if (indexOfLastQuotes < (total - 6)) {
-            setFirstIndex(indexOfLastQuotes - 2)
+            setFirstIndex(indexOfLastQuotes)
             setLastIndex(prev => prev + 50)
         }
 
@@ -24,6 +24,11 @@ const PaginationBtns = ({ total, current, setFirstIndex, setLastIndex, indexOfFi
         if (indexOfFirstQuotes > 0) {
             setLastIndex(indexOfFirstQuotes)
             setFirstIndex(prev => prev - 50)
+        }
+
+        if (indexOfLastQuotes === total) {
+            setLastIndex(total - 6)
+            setFirstIndex ((indexOfLastQuotes-6) - 50)
         }
     }
 

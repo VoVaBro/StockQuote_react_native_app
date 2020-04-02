@@ -1,17 +1,24 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { StyleSheet, Text, View, FlatList, Dimensions } from 'react-native';
 
 import SybolCard from '../components/SybolCard'
+
+
 
 const { width, height } = Dimensions.get('screen')
 
 
 const SybolCardLisl = ({ quotesData, navigation }) => {
 
-  const showDetails = () => {
-    navigation.navigate('Quotes Details')
+
+  const showDetails = (symbol, description) => {
+    navigation.navigate('Quotes Details', {
+      details: symbol,
+      description: description
+    })
   }
-  
+
+
 
   return (
     <View style={styles.list}>
@@ -19,7 +26,7 @@ const SybolCardLisl = ({ quotesData, navigation }) => {
         width={360}
         showsVerticalScrollIndicator={false}
         data={quotesData}
-        renderItem={({ item }) => <SybolCard title={item.symbol} showDetails={showDetails}/>}
+        renderItem={({ item }) => <SybolCard description={item.description} title={item.symbol} showDetails={showDetails} />}
         keyExtractor={item => item.symbol}
       />
     </View>
