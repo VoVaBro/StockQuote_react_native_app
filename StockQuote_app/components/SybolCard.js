@@ -2,9 +2,11 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 
-const SybolCard = ({ title }) => {
+const SybolCard = ({ title, showDetails  }) => {
     return (
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity style={styles.card}
+        onPress={showDetails}
+        >
             <Text style={styles.text}>
                 {title}
             </Text>

@@ -7,7 +7,7 @@ import { StyleSheet, Text, View } from 'react-native';
   return (
     <View style={styles.container}>
      
-     <PaginationBtns/>
+    
     </View>
   );
 }

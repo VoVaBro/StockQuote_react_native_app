@@ -7,7 +7,7 @@ import SybolCardLisl from '../components/SybolCardLisl'
 import SearchBar from '../components/SearchBar'
 
 
-const QuotesList = () => {
+const QuotesList = ({navigation}) => {
 
   const [quotesData, setQuotesData] = useState([])
 
@@ -40,7 +40,7 @@ const QuotesList = () => {
   return (
     <View style={{ flex: 1 }}>
 
-      <SybolCardLisl quotesData={currentQuotesList} />
+      <SybolCardLisl quotesData={currentQuotesList} navigation={navigation}/>
 
       <SearchBar />
 

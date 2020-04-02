@@ -6,8 +6,11 @@ import SybolCard from '../components/SybolCard'
 const { width, height } = Dimensions.get('screen')
 
 
-const SybolCardLisl = ({ quotesData }) => {
+const SybolCardLisl = ({ quotesData, navigation }) => {
 
+  const showDetails = () => {
+    navigation.navigate('Quotes Details')
+  }
   
 
   return (
@@ -16,7 +19,7 @@ const SybolCardLisl = ({ quotesData }) => {
         width={360}
         showsVerticalScrollIndicator={false}
         data={quotesData}
-        renderItem={({ item }) => <SybolCard title={item.symbol} />}
+        renderItem={({ item }) => <SybolCard title={item.symbol} showDetails={showDetails}/>}
         keyExtractor={item => item.symbol}
       />
     </View>
