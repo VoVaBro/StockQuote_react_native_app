@@ -5,7 +5,7 @@ import { Entypo } from '@expo/vector-icons'
 const { width, height } = Dimensions.get('window')
 
 
-const PaginationBtns = ({ total, current, setFirstIndex, setLastIndex, indexOfFirstQuotes, indexOfLastQuotes }) => {
+const PaginationBtns = ({ total, current, setFirstIndex, setLastIndex, indexOfFirstQuotes, indexOfLastQuotes, reload }) => {
 
 
     const next = () => {
@@ -28,7 +28,7 @@ const PaginationBtns = ({ total, current, setFirstIndex, setLastIndex, indexOfFi
 
         if (indexOfLastQuotes === total) {
             setLastIndex(total - 6)
-            setFirstIndex ((indexOfLastQuotes-6) - 50)
+            setFirstIndex((indexOfLastQuotes - 6) - 50)
         }
     }
 
@@ -41,18 +41,27 @@ const PaginationBtns = ({ total, current, setFirstIndex, setLastIndex, indexOfFi
                 <Entypo name="arrow-with-circle-left" size={46} color='#268421' />
             </TouchableOpacity>
             <View size={styles.counter}>
-                <Text style={styles.text}>
-                    {current}
-                    {indexOfLastQuotes === total ?
-                        ' '
-                        :
-                        <Text>... </Text>
-                    }
+                {!reload ?
 
+                    <Text style={styles.text}>
+                        {current}
+                        {indexOfLastQuotes === total ?
+                            ' '
+                            :
+                            <Text>... </Text>
+                        }
                     of
                     <Text>  </Text>
-                    {total}
-                </Text>
+                        {total}
+                    </Text>
+                    :
+                    <Text style={styles.text}>
+
+                        <Text>Finde: </Text>
+                        <Text>  </Text>
+                        {total}
+                    </Text>
+                }
             </View>
 
 

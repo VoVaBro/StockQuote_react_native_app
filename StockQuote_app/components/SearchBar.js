@@ -1,31 +1,39 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, Dimensions } from 'react-native';
+import React, { useState, useContext } from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import { Feather } from '@expo/vector-icons'
 
+import { SearchContext } from '../context/SearchContext'
 
-const {width} = Dimensions.get('screen')
+
+const { width } = Dimensions.get('screen')
 
 
 const SearchBar = () => {
 
- 
+  const { getSearchValue } = useContext(SearchContext)
 
-  const [search, setSearch] = useState()
-  const [searchedValue, setValue] = useState()
+  const [search, setSearch] = useState('')
+
 
   const handleChange = (t) => {
-    setSearch(t)
+    if (!t){
+      getSearchValue(search)
+    } else {
+       getSearchValue(t)
+    }
   }
 
-  const getSearch = (value) => {
-    setValue(value)
-  };
+  // const getSearch = (value) => {
+  
+  //     getSearchValue(value)
+      
+  // };
 
 
 
 
   return (
-      <View style={styles.bar}>
+    <View style={styles.bar}>
       <TextInput
         onChangeText={(text) => handleChange(text)}
         placeholder="Search symbol ..."
@@ -33,9 +41,9 @@ const SearchBar = () => {
 
       />
       <View style={{ marginLeft: width <= 320 ? 190 : 280, marginTop: -35 }}>
-        <TouchableWithoutFeedback onPress={() => getSearch(search)}>
+        <TouchableOpacity>
           <Feather size={24} name="search" />
-        </TouchableWithoutFeedback>
+        </TouchableOpacity>
       </View >
     </View>
   );
