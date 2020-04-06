@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import { Feather } from '@expo/vector-icons'
 
-import { SearchContext } from '../context/SearchContext'
+import { AppContext } from '../context/SearchContext'
 
 
 const { width } = Dimensions.get('screen')
@@ -10,7 +10,7 @@ const { width } = Dimensions.get('screen')
 
 const SearchBar = () => {
 
-  const { getSearchValue } = useContext(SearchContext)
+  const { getSearchValue } = useContext(AppContext)
 
   const [search, setSearch] = useState('')
 

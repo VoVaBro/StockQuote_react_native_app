@@ -1,11 +1,13 @@
 import React, { useState, createContext } from "react";
 
 
-export const SearchContext = createContext();
+export const AppContext = createContext();
 
-export const SearchProvider = (props) => {
+export const AppProvider = (props) => {
 
     const [searchValye, setSearchValue] = useState('');
+    const [realTimeQuotesList, setRealTimeQuotesList] = useState('');
+
 
 
     const getSearchValue = (value) => {
@@ -13,8 +15,8 @@ export const SearchProvider = (props) => {
     }
 
     return (
-        <SearchContext.Provider value={{searchValye, getSearchValue: getSearchValue}}>
+        <AppContext.Provider value={{searchValye, getSearchValue: getSearchValue, setRealTimeQuotesList, realTimeQuotesList}}>
             {props.children}
-        </SearchContext.Provider>
+        </AppContext.Provider>
     )
 }

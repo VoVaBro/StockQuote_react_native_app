@@ -1,12 +1,22 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useContext } from 'react';
+import { StyleSheet, Text, View, FlatList, Dimensions } from 'react-native';
+import { AppContext } from '../context/SearchContext'
 
- const RealTimeQuotes = () => {
+import RealTimeCard from '../components/RealTimeCard'
+
+const RealTimeQuotes = (props) => {
+
+
+  const { realTimeQuotesList } = useContext(AppContext)
+
 
   return (
-    <View style={styles.container}>
-      <Text>RealTimeQuotes!</Text>
-    </View>
+    <FlatList
+      data={realTimeQuotesList}
+      showsVerticalScrollIndicator={false}
+      renderItem={({ item }) => <RealTimeCard  title={item.symbol}  />}
+      keyExtractor={item => item.symbol}
+    />
   );
 }
 

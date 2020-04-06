@@ -1,0 +1,47 @@
+import React from 'react';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
+
+const { width } = Dimensions.get('screen')
+
+
+const RealTimeCard = ({ title }) => {
+
+
+    return (
+        <View style={styles.card}>
+            <Text style={styles.text}>
+                {title}
+            </Text>
+            <Text style={styles.desc}>
+                {title}
+            </Text>
+            <Text style={styles.desc}>
+                {title}
+            </Text>
+            <Text style={styles.desc}>
+                {title}
+            </Text>
+        </View>
+    );
+}
+
+const styles = StyleSheet.create({
+    card: {
+        width: width <= 320 ? 300 : 360,
+        height: 60,
+        marginLeft: width <= 320 ? 20 : null,
+        backgroundColor: '#B7B4A9',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        marginTop: 20,
+        marginLeft: 32
+    },
+    text: {
+        fontSize: 18,
+        fontWeight: "500",
+        marginLeft: 5
+    }
+});
+
+export default RealTimeCard

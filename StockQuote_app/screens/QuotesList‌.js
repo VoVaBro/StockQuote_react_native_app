@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import { useHttp } from '../hooks/useHttp'
-import { SearchContext } from '../context/SearchContext'
+import { AppContext } from '../context/SearchContext'
 
 
 import PaginationBtns from '../components/PaginationBtns'
@@ -11,7 +11,7 @@ import SearchBar from '../components/SearchBar'
 
 const QuotesList = ({ navigation }) => {
 
-  const { searchValye } = useContext(SearchContext)
+  const { searchValye, setRealTimeQuotesList } = useContext(AppContext)
 
 
 
@@ -32,6 +32,7 @@ const QuotesList = ({ navigation }) => {
   const fetchData = useCallback(async () => {
     let quotes = await request('https://quotes.instaforex.com/api/quotesList')
     setQuotesData(quotes.quotesList)
+    setRealTimeQuotesList(quotes.quotesList)
   }, [request])
 
 
