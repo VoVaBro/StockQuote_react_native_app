@@ -4,7 +4,10 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 const { width } = Dimensions.get('screen')
 
 
-const RealTimeCard = ({ title }) => {
+const RealTimeCard = ({ title, change, ask, bid }) => {
+
+
+
 
 
     return (
@@ -13,15 +16,18 @@ const RealTimeCard = ({ title }) => {
                 {title}
             </Text>
             <Text style={styles.desc}>
-                {title}
+                {change}
             </Text>
             <Text style={styles.desc}>
-                {title}
+                {ask}
             </Text>
             <Text style={styles.desc}>
-                {title}
+                {bid}
             </Text>
-        </View>
+
+
+
+        </View >
     );
 }
 

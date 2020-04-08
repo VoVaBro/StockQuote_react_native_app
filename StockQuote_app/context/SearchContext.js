@@ -6,7 +6,7 @@ export const AppContext = createContext();
 export const AppProvider = (props) => {
 
     const [searchValye, setSearchValue] = useState('');
-    const [realTimeQuotesList, setRealTimeQuotesList] = useState('');
+    const [realTimeQuotesList, setRealTimeQuotesList] = useState([]);
 
 
 
@@ -15,7 +15,7 @@ export const AppProvider = (props) => {
     }
 
     return (
-        <AppContext.Provider value={{searchValye, getSearchValue: getSearchValue, setRealTimeQuotesList, realTimeQuotesList}}>
+        <AppContext.Provider value={{searchValye, getSearchValue: getSearchValue, setRealTimeQuotesList, realTimeQuotesList: realTimeQuotesList}}>
             {props.children}
         </AppContext.Provider>
     )

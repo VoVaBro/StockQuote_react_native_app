@@ -48,9 +48,10 @@ const PaginationBtns = ({ total, current, setFirstIndex, setLastIndex, indexOfFi
                         {indexOfLastQuotes === total ?
                             ' '
                             :
-                            <Text>... </Text>
+                            <Text>... of</Text>
+                            
                         }
-                    of
+                    
                     <Text>  </Text>
                         {total}
                     </Text>
